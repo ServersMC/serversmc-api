@@ -1,4 +1,4 @@
-package org.serversmc.titleapi
+package org.serversmc.title
 
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
