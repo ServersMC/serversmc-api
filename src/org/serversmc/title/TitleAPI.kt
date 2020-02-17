@@ -1,8 +1,7 @@
 package org.serversmc.title
 
-import org.bukkit.Bukkit
-import org.bukkit.ChatColor
-import org.bukkit.entity.Player
+import org.bukkit.*
+import org.bukkit.entity.*
 
 object TitleAPI {
 	
