@@ -2,14 +2,9 @@ package org.serversmc.utils
 
 import org.bukkit.*
 import org.bukkit.plugin.*
+import org.serversmc.*
 
 object Console {
-	
-	private lateinit var plugin: Plugin
-	
-	fun init(plugin: Plugin) {
-		this.plugin = plugin
-	}
 	
 	val consoleSender = Bukkit.getConsoleSender()
 	private const val p = "[AutoRestart] "
@@ -22,8 +17,8 @@ object Console {
 	fun catchError(e: Exception, loc: String) {
 		err("There was an error in $loc")
 		consoleSendMessage(e.toString())
-		println(plugin.javaClass.name)
-		e.stackTrace.forEach { if (it.toString().startsWith(plugin.javaClass.name)) consoleSendMessage("\t" + it.toString()) }
+		println(PLUGIN.javaClass.name)
+		e.stackTrace.forEach { if (it.toString().startsWith(PLUGIN.javaClass.name)) consoleSendMessage("\t" + it.toString()) }
 		err("End of error")
 	}
 	
