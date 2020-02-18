@@ -3,6 +3,7 @@ package org.serversmc.utils
 import org.bukkit.ChatColor
 import org.bukkit.configuration.file.*
 import org.serversmc.*
+import org.serversmc.utils.Console.err
 import java.io.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -14,14 +15,16 @@ import kotlin.collections.ArrayList
  */
 interface ConfigAPI {
 	
-	class ConfigFile(fileName: String) {
-		val file = File(PLUGIN.dataFolder, "$fileName.yml")
-		lateinit var yamlConfiguration: YamlConfiguration
-		var version: Int = 0
+	companion object {
+		var globalConfig = YamlConfiguration()
+		val configList = ArrayList<ConfigFile>()
 	}
 	
-	private val configList get() = ArrayList<ConfigFile>()
-	val globalConfig get() = YamlConfiguration()
+	class ConfigFile(fileName: String) {
+		val file = File(PLUGIN.dataFolder, "$fileName.yml")
+		var yamlConfiguration = YamlConfiguration()
+		var version: Int = 0
+	}
 	
 	fun getString(path: String): String = ChatColor.translateAlternateColorCodes('&', globalConfig.getString(path).toString())
 	fun getInt(path: String): Int = globalConfig.getInt(path)
