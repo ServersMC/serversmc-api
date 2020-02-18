@@ -9,12 +9,12 @@ import kotlin.collections.ArrayList
 
 /**
  *  Add config files by overriding initializeConfigList()
- *  Leave super call method at the end
+ *  Use function addFile() to use
  *
  */
 interface ConfigAPI {
 	
-	class ConfigFile(private val fileName: String) {
+	class ConfigFile(fileName: String) {
 		val file = File(PLUGIN.dataFolder, "$fileName.yml")
 		lateinit var yamlConfiguration: YamlConfiguration
 		var version: Int = 0
@@ -34,7 +34,7 @@ interface ConfigAPI {
 		configList.add(ConfigFile(fileName))
 	}
 	
-	fun initializeConfigList()
+	fun setupConfigs()
 	
 	private fun combineSubConfigs() {
 		// Combine config to one Main config
@@ -47,12 +47,12 @@ interface ConfigAPI {
 	}
 	
 	fun reloadConfig() {
-		initializeConfigList()
+		setupConfigs()
 		combineSubConfigs()
 	}
 	
 	fun init() {
-		initializeConfigList()
+		setupConfigs()
 		configList.forEach { subConfig ->
 			// Initialize attributes
 			val file = subConfig.file
