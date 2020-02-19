@@ -1,4 +1,4 @@
-package org.serversmc.title
+package org.serversmc.protocol
 
 import org.bukkit.*
 import org.bukkit.entity.*
