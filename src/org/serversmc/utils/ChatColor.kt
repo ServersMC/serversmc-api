@@ -1,6 +1,6 @@
 package org.serversmc.utils
 
-import net.md_5.bungee.api.ChatColor
+import org.bukkit.ChatColor
 
 object ChatColor {
 	
